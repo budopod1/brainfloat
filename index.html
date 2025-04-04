@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brainfloat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Brainfloat</h1>
+    </header>
+    <main>
+        <section id="macros-panel">
+            <div id="controls">
+                <button id="stop-run">Run</button>
+                <button id="add-macro">Add Macro</button>
+                <button id="save">Save</button>
+                <button id="constants-open">Constants</button>
+                <button id="show-compiled">Compile</button>
+                <button id="export-save">Export Save</button>
+                <button id="start-import-save">Import Save</button>
+            </div>
+            <div id="macros"></div>
+        </section>
+        <section id="console-panel">
+            <div id="console-header">
+                <span id="console-title">Console</span>
+                <button id="console-clear">Clear</button>
+            </div>
+            <textarea id="console-text"></textarea>
+        </section>
+    </main>
+    <aside id="constants-modal" class="modal" style="display: none;">
+        <div id="constants-header">
+            <span id="constants-title">Constants</span>
+            <button id="constants-close" class="modal-close">Close</button>
+        </div>
+        <textarea id="constants-input"></textarea>
+    </aside>
+    <aside id="import-save-modal" class="modal" style="display: none;">
+        <div id="import-save-header">
+            <span id="import-save-title">Import Save</span>
+            <button id="cancel-import-save" class="modal-close">Cancel</button>
+        </div>
+        <textarea id="import-save-input"></textarea>
+        <div id="import-save-footer">
+            <button id="finish-import-save">Import</button>
+        </div>
+    </aside>
+    <template id="macro-template">
+        <div class="macro">
+            <div class="macro-header">
+                <span class="macro-title" contenteditable="true">UntitledMacro</span>
+                <button class="macro-delete">Remove</button>
+            </div>
+            <textarea class="macro-input" rows="1"></textarea>
+        </div>
+    </template>
+</body>
+</html>

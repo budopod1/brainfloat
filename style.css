@@ -1,0 +1,129 @@
+* {
+    box-sizing: border-box;
+    flex-basis: 0;
+}
+
+:root {
+    --color-1: #141414;
+    --color-2: #242424;
+    --color-3: #191919;
+    --border-color: #aaa;
+    --text-color: #bbb;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0.5rem;
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: var(--color-1);
+    color: var(--text-color);
+}
+
+button, input, textarea {
+    font: inherit;
+    background: inherit;
+    color: inherit;
+    border: solid 1px var(--border-color);
+}
+
+button {
+    cursor: pointer;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+.macro-input {
+    width: 100%;
+    resize: vertical;
+}
+
+.macro-delete {
+    float: right;
+}
+
+#controls {
+    padding-bottom: 1rem;
+    border-bottom: solid 1px var(--border-color);
+    margin-bottom: 1rem;
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    min-height: 0;
+}
+
+#macros-panel {
+    flex-grow: 3;
+    max-height: 100%;
+    min-height: 0;
+    overflow-y: scroll;
+}
+
+.macro:nth-child(odd) {
+    background-color: var(--color-2);
+}
+
+.macro:nth-child(even) {
+    background-color: var(--color-3);
+}
+
+.macro {
+    padding: 0.5rem;
+}
+
+#console-panel {
+    flex-grow: 2;
+    background-color: var(--color-3);
+    border: solid 1px var(--border-color);
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+#console-text {
+    flex-grow: 1;
+    outline: none;
+    border: none;
+    resize: none;
+    word-break: break-all
+}
+
+#console-clear {
+    float: right;
+}
+
+.modal {
+    position: fixed;
+    inset: 10vh;
+    border: solid 1px var(--border-color);
+    background-color: var(--color-1);
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-close {
+    float: right;
+}
+
+.modal textarea {
+    resize: none;
+    flex-grow: 1;
+    width: 100%;
+    outline: none;
+}
