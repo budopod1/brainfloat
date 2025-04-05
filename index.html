@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <script src="libbrainfloat.js"></script>
     <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -32,7 +33,8 @@
                 <span id="console-title">Console</span>
                 <button id="console-clear">Clear</button>
             </div>
-            <textarea id="console-text"></textarea>
+            <textarea id="console-text" autocomplete="off"
+                autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
         </section>
     </main>
     <aside id="constants-modal" class="modal" style="display: none;">
@@ -40,14 +42,16 @@
             <span id="constants-title">Constants</span>
             <button id="constants-close" class="modal-close">Close</button>
         </div>
-        <textarea id="constants-input"></textarea>
+        <textarea id="constants-input" autocomplete="off"
+            autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
     </aside>
     <aside id="import-save-modal" class="modal" style="display: none;">
         <div id="import-save-header">
             <span id="import-save-title">Import Save</span>
             <button id="cancel-import-save" class="modal-close">Cancel</button>
         </div>
-        <textarea id="import-save-input"></textarea>
+        <textarea id="import-save-input" autocomplete="off"
+            autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
         <div id="import-save-footer">
             <button id="finish-import-save">Import</button>
         </div>
@@ -55,10 +59,11 @@
     <template id="macro-template">
         <div class="macro">
             <div class="macro-header">
-                <span class="macro-title" contenteditable="true">UntitledMacro</span>
+                <span class="macro-title" contenteditable="true">untitled_macro</span>
                 <button class="macro-delete">Remove</button>
             </div>
-            <textarea class="macro-input" rows="1"></textarea>
+            <textarea class="macro-input" rows="1" autocomplete="off"
+                autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
         </div>
     </template>
 </body>
