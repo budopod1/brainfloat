@@ -1,5 +1,5 @@
 const DEFAULT_CELL_SIZE = 256;
-const DEFAULT_IDLE_INTERVAL = 50;
+const DEFAULT_IDLE_INTERVAL = -1;
 
 class BFParseError extends Error {}
 
@@ -55,7 +55,7 @@ function getWrapNumFn(env) {
 }
 
 async function executeParsedBF(env, parsed) {
-    if (env.onStart) env.onStart(parsed);
+    env.onStart?.(parsed);
 
     let lastIdle = Date.now();
 
@@ -75,8 +75,8 @@ async function executeParsedBF(env, parsed) {
             let now = Date.now();
             let idleInterval = (env.idleInterval
                 || DEFAULT_IDLE_INTERVAL);
-            if (now - lastIdle > idleInterval) {
-                if (env.isStopRequested()) return;
+            if (idleInterval != -1 && now - lastIdle > idleInterval) {
+                if (env.isStopRequested?.()) return;
                 await idle();
                 lastIdle = now;
             }
@@ -113,9 +113,7 @@ async function executeParsedBF(env, parsed) {
             }
             break;
         case "output":
-            if (env.sendOutput) {
-                env.sendOutput(String.fromCharCode(mem[i]));
-            }
+            env.sendOutput?.(mem[i]);
             break;
         case "input":
             let input;
@@ -125,7 +123,7 @@ async function executeParsedBF(env, parsed) {
                 input = 0;
             }
             if (input == -1) return;
-            mem[i] = input;
+            mem[i] = wrapNum(input);
             lastIdle = Date.now();
             break;
         case "dump":
@@ -298,3 +296,9 @@ function getEnvBF(env) {
 function runEnv(env) {
     return runBF(env, getEnvBF(env));
 }
+
+try {
+    module.exports = {
+        parseConstants, getEnvBF, runEnv, runBF
+    };
+} catch {}

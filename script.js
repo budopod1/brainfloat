@@ -104,9 +104,10 @@ function getEnv() {
             sendOutputStr("Execution started\n");
         },
         isStopRequested: () => isStopRequested,
-        sendOutput: sendOutputStr,
+        sendOutput: c => sendOutputStr(String.fromCharCode(c)),
         getInput: getInputChar,
-        outputDump
+        outputDump,
+        idleInterval: 50
     };
 }
 
