@@ -127,9 +127,7 @@ async function executeParsedBF(env, parsed) {
             lastIdle = Date.now();
             break;
         case "dump":
-            if (env.ouputDump) {
-                env.ouputDump(mem, i);
-            }
+            env.ouputDump?.(mem, i);
             break;
         case "loop":
             if (mem[i] != 0) {
@@ -287,9 +285,9 @@ function compileMacro(env, macroName, arguments) {
 
 function getEnvBF(env) {
     let compiled = compileMacro(env, "program", []);
-    if (env.onCompiled) env.onCompiled(compiled);
+    env.onCompiled?.(compiled);
     let optimized = optimizeTextBF(compiled);
-    if (env.onOptimized) env.onOptimized(optimized);
+    env.onOptimized?.(optimized);
     return optimized;
 }
 
